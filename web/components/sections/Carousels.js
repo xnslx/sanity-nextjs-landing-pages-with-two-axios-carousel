@@ -69,7 +69,6 @@ import NestedCarousel from '../NestedCarousel';
 
 
 const Carousels = () => {
-    // const [viewportRef, embla] = useEmblaCarousel({loop: true});
     return (
         <div>hello</div>
     )
