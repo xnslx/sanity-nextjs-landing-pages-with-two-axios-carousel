@@ -17,7 +17,8 @@ import internalLink from './objects/internalLink';
 import link from './objects/link';
 import portableText from './objects/portableText';
 import simplePortableText from './objects/simplePortableText';
-
+import carousel from './objects/carousel';
+import carousels from './objects/carousels';
 // Landing page sections
 import hero from './objects/hero';
 import imageSection from './objects/imageSection';
@@ -44,5 +45,7 @@ export default createSchema({
     simplePortableText,
     siteConfig,
     textSection,
+    carousel,
+    carousels,
   ]),
 });
