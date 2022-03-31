@@ -35,7 +35,7 @@ export default function Carousels(props){
         <>
             <div className={styles.embla}>
                 <div className={styles.embla__viewport} ref={viewportRef}>
-                    <div className={styles.sembla__container}>
+                    <div className={styles.embla__container}>
                         {carousels.map((s, index) => {
                         console.log('s',s)
                             return (

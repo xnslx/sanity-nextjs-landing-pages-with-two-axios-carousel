@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import imageUrlBuilder from '@sanity/image-url'
+import clsx from "clsx";
 
 import client from "../client";
 import styles from './NestedCarousel.module.css'
@@ -56,7 +57,7 @@ const NestedCarousel = ({ slides, setLockParentScroll }) => {
                   <div className={styles.embla__slide__inner__nested}>
                     <img
                       className={styles.embla__slide__img__nested}
-                      src={urlFor(s.asset._ref)}
+                      src={urlFor(s.asset._ref).width(300).url()}
                       alt="A cool cat."
                     />
                   </div>
@@ -82,10 +83,10 @@ const NestedCarousel = ({ slides, setLockParentScroll }) => {
 };
 
 export const DotButton = ({ selected, onClick }) => {
-  console.log("selected", selected);
+  console.log(styles['is-selected'])
   return (
     <button
-      className={`embla__dot ${selected ? "is-selected" : ""}`}
+      className={`${styles.embla__dot} ${selected ? `${styles['is-selected']}` : ""}`}
       type="button"
       onClick={onClick}
     />

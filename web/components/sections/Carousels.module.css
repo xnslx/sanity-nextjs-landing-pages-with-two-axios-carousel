@@ -136,11 +136,11 @@
     height: 100%;
   }
   
-  .embla__button--prev {
+  .embla__button__prev {
     left: 27px;
   }
   
-  .embla__button--next {
+  .embla__button__next {
     right: 27px;
   }
   
