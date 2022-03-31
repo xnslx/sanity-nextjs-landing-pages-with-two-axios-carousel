@@ -4,6 +4,7 @@ import * as SectionComponents from './sections'
 import capitalizeString from '../utils/capitalizeString'
 
 function resolveSections(section) {
+  console.log('section', section)
   // eslint-disable-next-line import/namespace
   const Section = SectionComponents[capitalizeString(section._type)]
 
