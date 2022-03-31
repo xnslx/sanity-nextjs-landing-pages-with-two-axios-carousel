@@ -4,6 +4,7 @@ import useEmblaCarousel from "embla-carousel-react";
 
 import { useNestedEmblaCarousel } from '../useNestedEmblaCarousel'
 import NestedCarousel from '../NestedCarousel';
+import styles from './Carousels.module.css'
 
 
 export default function Carousels(props){
@@ -32,34 +33,30 @@ export default function Carousels(props){
 
     return (
         <>
-        <div className="embla">
-            <div className="embla__viewport" ref={viewportRef}>
-            <div className="embla__container">
-                {carousels.map((s, index) => {
-                console.log('s',s)
-                return Object.values(s).map((j, index) => {
-                    return (
-                    <div className="embla__slide" key={index}>
-                        <div>
-                        {Object.keys(s).map((i, index) => {
-                            return <span>{i}</span>;
+            <div className={styles.embla}>
+                <div className={styles.embla__viewport} ref={viewportRef}>
+                    <div className={styles.sembla__container}>
+                        {carousels.map((s, index) => {
+                        console.log('s',s)
+                            return (
+                                <div className={styles.embla__slide} key={index}>
+                                    <div>
+                                        <span>{s.menu}</span>
+                                    </div>
+                                    <div>
+                                    <NestedCarousel
+                                        slides={s.carousels}
+                                        setLockParentScroll={setLockParentScroll}
+                                    />
+                                    </div>
+                                </div>
+                            )
                         })}
-                        </div>
-                        <div>
-                        <NestedCarousel
-                            slides={j}
-                            setLockParentScroll={setLockParentScroll}
-                        />
-                        </div>
                     </div>
-                    );
-                });
-                })}
+                </div>
+                <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
+                <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
             </div>
-            </div>
-            <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
-            <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
-        </div>
         </>
     );
 }

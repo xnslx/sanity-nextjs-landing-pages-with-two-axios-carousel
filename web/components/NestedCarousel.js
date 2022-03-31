@@ -1,40 +1,95 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import imageUrlBuilder from '@sanity/image-url'
 
-const noop = () => undefined;
+import client from "../client";
+import styles from './NestedCarousel.module.css'
 
-export const useNestedEmblaCarousel = (embla) => {
-  const [parentIsLocked, setParentIsLocked] = useState(false);
-  const onPointerUp = useRef(noop);
-  const lastLocation = useRef(0);
 
-  const releaseParentScroll = useCallback(() => {
+const NestedCarousel = ({ slides, setLockParentScroll }) => {
+  const builder = imageUrlBuilder(client)
+  function urlFor(source) {
+    return builder.image(source)
+  }
+
+  const [viewportRef, embla] = useEmblaCarousel({
+    axis: "y",
+    skipSnaps: false
+  });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
+  const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
+  const [scrollSnaps, setScrollSnaps] = useState([]);
+  const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);
+  const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla]);
+  const onSelect = useCallback(() => {
     if (!embla) return;
-    onPointerUp.current = noop;
-    const engine = embla.internalEngine();
-    engine.animation.stop();
-    engine.location.set(lastLocation.current);
-    engine.target.set(engine.location);
-    engine.scrollTo.distance(0, false);
-    engine.translate.toggleActive(true);
-  }, [embla]);
+    setSelectedIndex(embla.selectedScrollSnap());
+    setPrevBtnEnabled(embla.canScrollPrev());
+    setNextBtnEnabled(embla.canScrollNext());
+  }, [embla, setSelectedIndex]);
 
-  const lockParentScroll = useCallback(() => {
-    if (!embla) return;
-    const engine = embla.internalEngine();
-    engine.translate.toggleActive(false);
-    lastLocation.current = engine.location.get();
-    onPointerUp.current = releaseParentScroll;
-  }, [embla, releaseParentScroll]);
+  const scrollTo = useCallback(
+    (index) => {
+      embla && embla.scrollTo(index);
+    },
+    [embla]
+  );
 
   useEffect(() => {
-    if (parentIsLocked) lockParentScroll();
-  }, [parentIsLocked, lockParentScroll]);
-
-  useEffect(() => {
     if (!embla) return;
-    embla.on("pointerUp", () => onPointerUp.current());
-    embla.on("pointerDown", () => embla.internalEngine().animation.start());
-  }, [embla]);
+    onSelect();
+    setScrollSnaps(embla.scrollSnapList());
+    embla.on("select", onSelect);
+  }, [embla, onSelect, setScrollSnaps]);
 
-  return setParentIsLocked;
+  return (
+    <>
+      <div className={styles.embla__nested}>
+        <div className={styles.embla__viewport} ref={viewportRef}>
+          <div className={styles.embla__container__nested}>
+            {slides.map((s, index) => {
+              console.log('nested',s)
+              // return <img className="" src={s} alt="A cool cat." key={index} />;
+              return (
+                <div className={styles.embla__slide__nested} key={index}>
+                  <div className={styles.embla__slide__inner__nested}>
+                    <img
+                      className={styles.embla__slide__img__nested}
+                      src={urlFor(s.asset._ref)}
+                      alt="A cool cat."
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+      <div className={styles.embla__dots}>
+        {scrollSnaps.map((_, index) => {
+          return (
+            <DotButton
+              key={index}
+              selected={index === selectedIndex}
+              onClick={() => scrollTo(index)}
+            />
+          );
+        })}
+      </div>
+    </>
+  );
 };
+
+export const DotButton = ({ selected, onClick }) => {
+  console.log("selected", selected);
+  return (
+    <button
+      className={`embla__dot ${selected ? "is-selected" : ""}`}
+      type="button"
+      onClick={onClick}
+    />
+  );
+};
+
+export default NestedCarousel;

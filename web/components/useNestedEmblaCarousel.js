@@ -3,18 +3,14 @@ import { useState, useEffect, useCallback, useRef } from "react";
 const noop = () => undefined;
 
 export const useNestedEmblaCarousel = (embla) => {
-    console.log('embla', embla)
   const [parentIsLocked, setParentIsLocked] = useState(false);
   const onPointerUp = useRef(noop);
   const lastLocation = useRef(0);
 
-  console.log('parentIsLocked',parentIsLocked)
-
   const releaseParentScroll = useCallback(() => {
     if (!embla) return;
     onPointerUp.current = noop;
-    const engine = embla.dangerouslyGetEngine();
-    console.log("engine", engine);
+    const engine = embla.internalEngine();
     engine.animation.stop();
     engine.location.set(lastLocation.current);
     engine.target.set(engine.location);
@@ -24,7 +20,7 @@ export const useNestedEmblaCarousel = (embla) => {
 
   const lockParentScroll = useCallback(() => {
     if (!embla) return;
-    const engine = embla.dangerouslyGetEngine();
+    const engine = embla.internalEngine();
     engine.translate.toggleActive(false);
     lastLocation.current = engine.location.get();
     onPointerUp.current = releaseParentScroll;
@@ -37,9 +33,7 @@ export const useNestedEmblaCarousel = (embla) => {
   useEffect(() => {
     if (!embla) return;
     embla.on("pointerUp", () => onPointerUp.current());
-    embla.on("pointerDown", () =>
-      embla.dangerouslyGetEngine().animation.start()
-    );
+    embla.on("pointerDown", () => embla.internalEngine().animation.start());
   }, [embla]);
 
   return setParentIsLocked;
