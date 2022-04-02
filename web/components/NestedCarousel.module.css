@@ -148,6 +148,7 @@
     justify-content: center;
     float: right;
     padding-top: 100px;
+    margin-top: -100px;
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
     -o-transform: rotate(90deg);
@@ -179,6 +180,6 @@
   }
   
   .embla__dot.is-selected:after {
-    background-color: #1bcacd;
+    background-color: #000000;
     opacity: 1;
   }

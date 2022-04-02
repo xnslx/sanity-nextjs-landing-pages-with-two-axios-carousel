@@ -5,6 +5,8 @@ import useEmblaCarousel from "embla-carousel-react";
 import { useNestedEmblaCarousel } from '../useNestedEmblaCarousel'
 import NestedCarousel from '../NestedCarousel';
 import styles from './Carousels.module.css'
+import EmblaCarouselPrevButton from '../EmblaCarouselPrevButton'
+import EmblaCarouselNextButton from '../EmblaCarouselNextButton';
 
 
 export default function Carousels(props){
@@ -54,8 +56,10 @@ export default function Carousels(props){
                         })}
                     </div>
                 </div>
-                <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
-                <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
+                {/* <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} /> */}
+                {/* <NextButton onClick={scrollNext} enabled={nextBtnEnabled} /> */}
+                <EmblaCarouselPrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
+                <EmblaCarouselNextButton onClick={scrollNext} enabled={nextBtnEnabled} />
             </div>
         </>
     );

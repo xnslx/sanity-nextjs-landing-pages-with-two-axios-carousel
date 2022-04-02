@@ -173,7 +173,7 @@
   }
   
   .embla__dot:after {
-    background-color: #efefef;
+    background-color: #000000;
     width: 100%;
     height: 4px;
     border-radius: 2px;
@@ -181,10 +181,49 @@
   }
   
   .embla__dot.is-selected:after {
-    background-color: #1bcacd;
+    background-color: #000000;
     opacity: 1;
   }
 
   .menu{
     font-size: 5rem;
   }
+
+.prevBtn{
+  /* background-color: #1bcacd; */
+  background-color: transparent;
+  border-style: none;
+  transform: scale(0.25);
+  cursor: pointer;
+  touch-action: manipulation;
+  position: absolute;
+  z-index: 1;
+  top: 40%;
+  justify-content: center;
+  align-items: center;
+  right:60%;
+}
+
+.nextBtn{
+  background-color: transparent;
+  border-style: none;
+  transform: scale(0.25);
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  top: 40%;
+  left:60%;
+  /* padding-left:-8rem; */
+  justify-content: center;
+  align-items: center;
+}
+
+.prevBtn:disabled {
+  cursor: default;
+  opacity: 0.3;
+}
+
+.nextBtn:disabled{
+  cursor: default;
+  opacity: 0.3;
+}
