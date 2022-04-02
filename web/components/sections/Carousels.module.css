@@ -1,7 +1,8 @@
 .embla {
     position: relative;
     /* background-color: #f7f7f7; */
-    max-width: 670px;
+    /* max-width: 670px; */
+    max-width: 90vw;
     margin-left: auto;
     margin-right: auto;
   }
@@ -12,7 +13,6 @@
     max-width: 670px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 30px;
   }
   
   .embla__viewport {
@@ -53,7 +53,7 @@
     /* padding: 20px; */
     /* border: 1px solid black; */
     /* background-color: rgb(47, 114, 193); */
-    min-height: 190px;
+    min-height: 78vh;
     overflow: hidden;
   }
   
@@ -72,11 +72,11 @@
     /* background-color: rgb(116, 99, 195); */
   }
   
-  .embla__slide__inner {
+  /* .embla__slide__inner {
     position: relative;
     overflow: hidden;
     height: 100%;
-  }
+  } */
   
   .embla__slide__inner__nested {
     position: relative;
@@ -183,4 +183,8 @@
   .embla__dot.is-selected:after {
     background-color: #1bcacd;
     opacity: 1;
+  }
+
+  .menu{
+    font-size: 5rem;
   }

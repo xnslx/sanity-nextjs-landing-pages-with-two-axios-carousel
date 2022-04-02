@@ -41,7 +41,7 @@ export default function Carousels(props){
                             return (
                                 <div className={styles.embla__slide} key={index}>
                                     <div>
-                                        <span>{s.menu}</span>
+                                        <h1 className={styles.menu}>{s.menu}</h1>
                                     </div>
                                     <div>
                                     <NestedCarousel

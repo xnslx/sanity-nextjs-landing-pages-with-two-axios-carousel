@@ -57,7 +57,7 @@ const NestedCarousel = ({ slides, setLockParentScroll }) => {
                   <div className={styles.embla__slide__inner__nested}>
                     <img
                       className={styles.embla__slide__img__nested}
-                      src={urlFor(s.asset._ref).width(300).url()}
+                      src={urlFor(s.asset._ref).width(600).url()}
                       alt="A cool cat."
                     />
                   </div>
