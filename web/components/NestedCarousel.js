@@ -50,7 +50,6 @@ const NestedCarousel = ({ slides, setLockParentScroll }) => {
         <div className={styles.embla__viewport} ref={viewportRef}>
           <div className={styles.embla__container__nested}>
             {slides.map((s, index) => {
-              console.log('nested',s)
               // return <img className="" src={s} alt="A cool cat." key={index} />;
               return (
                 <div className={styles.embla__slide__nested} key={index}>
@@ -83,7 +82,6 @@ const NestedCarousel = ({ slides, setLockParentScroll }) => {
 };
 
 export const DotButton = ({ selected, onClick }) => {
-  console.log(styles['is-selected'])
   return (
     <button
       className={`${styles.embla__dot} ${selected ? `${styles['is-selected']}` : ""}`}

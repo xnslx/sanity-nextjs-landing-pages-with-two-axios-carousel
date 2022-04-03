@@ -10,7 +10,6 @@ import EmblaCarouselNextButton from '../EmblaCarouselNextButton';
 
 
 export default function Carousels(props){
-    console.log('carousels', props)
     const { carousels, _key, _type } = props
     
 
@@ -39,7 +38,6 @@ export default function Carousels(props){
                 <div className={styles.embla__viewport} ref={viewportRef}>
                     <div className={styles.embla__container}>
                         {carousels.map((s, index) => {
-                        console.log('s',s)
                             return (
                                 <div className={styles.embla__slide} key={index}>
                                     <div>
