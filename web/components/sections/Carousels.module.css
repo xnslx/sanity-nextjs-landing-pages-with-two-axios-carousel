@@ -189,6 +189,12 @@
     font-size: 5rem;
   }
 
+  @media only screen and (max-width: 768px) {
+    .menu{
+      font-size: 2rem;
+    }
+  }
+
 .prevBtn{
   /* background-color: #1bcacd; */
   background-color: transparent;
