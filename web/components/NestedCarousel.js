@@ -6,6 +6,43 @@ import clsx from "clsx";
 import client from "../client";
 import styles from './NestedCarousel.module.css'
 
+const VariedTypeCarousel = ({ s, key }) => {
+  const builder = imageUrlBuilder(client)
+  function urlFor(source) {
+    return builder.image(source)
+  }
+  console.log('10', s)
+  switch (s._type) {
+    case "image":
+      return (
+        <div className={styles.embla__slide__nested} key={s._key}>
+          <div className={styles.embla__slide__inner__nested}>
+            <img
+              className={styles.embla__slide__img__nested}
+              src={urlFor(s.asset._ref).width(600).url()}
+              alt="A cool cat."
+            />
+          </div>
+        </div>
+      );
+    case "video":
+      return (
+        <iframe
+          src={`https://player.vimeo.com/video/${s.id}?background=1&autoplay=1&autopause=0&loop=1&muted=1`}
+          frameBorder="0"
+          title={s.title}
+          allow="autoplay; fullscreen"
+          style={{
+            height: "100vw",
+            minWidth: "150vh"
+          }}
+        ></iframe>
+      );
+    default:
+      return null;
+  }
+};
+
 
 const NestedCarousel = ({ slides, setLockParentScroll }) => {
   const builder = imageUrlBuilder(client)
@@ -50,17 +87,9 @@ const NestedCarousel = ({ slides, setLockParentScroll }) => {
         <div className={styles.embla__viewport} ref={viewportRef}>
           <div className={styles.embla__container__nested}>
             {slides.map((s, index) => {
-              // return <img className="" src={s} alt="A cool cat." key={index} />;
+              console.log('85',s)
               return (
-                <div className={styles.embla__slide__nested} key={index}>
-                  <div className={styles.embla__slide__inner__nested}>
-                    <img
-                      className={styles.embla__slide__img__nested}
-                      src={urlFor(s.asset._ref).width(600).url()}
-                      alt="A cool cat."
-                    />
-                  </div>
-                </div>
+                <VariedTypeCarousel s={s} key={index} />
               );
             })}
           </div>

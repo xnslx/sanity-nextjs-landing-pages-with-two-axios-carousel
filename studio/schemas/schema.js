@@ -19,6 +19,7 @@ import portableText from './objects/portableText';
 import simplePortableText from './objects/simplePortableText';
 import carousel from './objects/carousel';
 import carousels from './objects/carousels';
+import video from './objects/video';
 // Landing page sections
 import hero from './objects/hero';
 import imageSection from './objects/imageSection';
@@ -47,5 +48,6 @@ export default createSchema({
     textSection,
     carousel,
     carousels,
+    video,
   ]),
 });

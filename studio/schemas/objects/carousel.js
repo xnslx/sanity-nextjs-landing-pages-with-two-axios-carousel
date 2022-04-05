@@ -12,7 +12,7 @@ export default {
             title: 'Carousels',
             name: 'carousels',
             type: 'array',
-            of: [{ type: 'image' }]
+            of: [{ type: 'image' }, {type: 'video'}]
         }],
         preview: {
         select: {
