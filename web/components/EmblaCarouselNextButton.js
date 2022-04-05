@@ -3,7 +3,7 @@ import styles from '../components/sections/Carousels.module.css'
 
 function EmblaCarouselNextButton({ enabled, onClick }) {
     return (
-    <button className={`${styles.nextBtn} ${styles.nextBtn__next}`}
+    <button className={`${styles.prevBtn} ${styles.embla__button__next}`}
     onClick={onClick}
     disabled={!enabled}>
         <svg

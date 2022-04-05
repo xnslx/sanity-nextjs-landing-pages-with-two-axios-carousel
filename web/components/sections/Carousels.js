@@ -65,16 +65,3 @@ export default function Carousels(props){
 
 
 
-// const Carousels = () => {
-//     let emblaNode;
-//     useEffect(() => {
-//         const emblaNode = document.querySelector('.embla')
-//         console.log('emblaNode', emblaNode)
-//     })
-
-//     return (
-//         <div className='embla'>hello</div>
-//     )
-// }
-
-// export default Carousels

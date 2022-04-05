@@ -137,11 +137,11 @@
   }
   
   .embla__button__prev {
-    left: 27px;
+    left: -160px;
   }
   
   .embla__button__next {
-    right: 27px;
+    right: -160px;
   }
   
   .embla__dots {
@@ -193,6 +193,14 @@
     .menu{
       font-size: 2rem;
     }
+
+    .embla__button__prev {
+      left: -280px;
+    }
+    
+    .embla__button__next {
+      right: -280px;
+    }
   }
 
 .prevBtn{
@@ -207,7 +215,6 @@
   top: 40%;
   justify-content: center;
   align-items: center;
-  right:60%;
 }
 
 .nextBtn{
