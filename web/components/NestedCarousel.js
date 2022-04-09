@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import imageUrlBuilder from '@sanity/image-url'
 import clsx from "clsx";
+import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 
 import client from "../client";
 import styles from './NestedCarousel.module.css'
@@ -27,16 +28,22 @@ const VariedTypeCarousel = ({ s, key }) => {
       );
     case "video":
       return (
-        <iframe
-          src={`https://player.vimeo.com/video/${s.id}?background=1&autoplay=1&autopause=0&loop=1&muted=1`}
-          frameBorder="0"
-          title={s.title}
-          allow="autoplay; fullscreen"
-          style={{
-            height: "100vw",
-            minWidth: "150vh"
-          }}
-        ></iframe>
+        <div className={styles.embla__slide__nested}>
+          <div className={styles.embla__slide__inner__nested}>
+            <video playsInline loop autoplay className={styles.video} src={`${s.id}`}>
+            </video>
+          </div>
+        </div>
+        // <iframe
+        //   src={`https://player.vimeo.com/video/${s.id}?background=1&autoplay=1&autopause=0&loop=1&muted=1`}
+        //   frameBorder="0"
+        //   title={s.title}
+        //   allow="autoplay; fullscreen"
+        //   style={{
+        //     height: "100vw",
+        //     minWidth: "150vh"
+        //   }}
+        // ></iframe>
       );
     default:
       return null;
@@ -53,7 +60,7 @@ const NestedCarousel = ({ slides, setLockParentScroll }) => {
   const [viewportRef, embla] = useEmblaCarousel({
     axis: "y",
     skipSnaps: false
-  });
+  },[WheelGesturesPlugin({ forceWheelAxis: "y" })]);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);

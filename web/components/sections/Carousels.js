@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { PrevButton, NextButton } from "../EmblaCarouselButton";
 import useEmblaCarousel from "embla-carousel-react";
+import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 
 import { useNestedEmblaCarousel } from '../useNestedEmblaCarousel'
 import NestedCarousel from '../NestedCarousel';
@@ -13,7 +14,11 @@ export default function Carousels(props){
     const { carousels, _key, _type } = props
     
 
-    const [viewportRef, embla] = useEmblaCarousel();
+    const [viewportRef, embla] = useEmblaCarousel({
+        axis: "x",
+        skipSnaps: false
+      },
+      [WheelGesturesPlugin({ forceWheelAxis: "x" })]);
     const setLockParentScroll = useNestedEmblaCarousel(embla);
     const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
     const [nextBtnEnabled, setNextBtnEnabled] = useState(false);

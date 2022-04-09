@@ -184,3 +184,17 @@
     background-color: #000000;
     opacity: 1;
   }
+
+  .video__container {
+    /* position: relative;
+    min-width: 100%;
+    height: 100%; */
+  }
+
+  .video{
+    max-height: 70vh;
+    max-width: 100vw;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+  }
