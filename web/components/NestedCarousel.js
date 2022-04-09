@@ -12,7 +12,6 @@ const VariedTypeCarousel = ({ s, key }) => {
   function urlFor(source) {
     return builder.image(source)
   }
-  console.log('10', s)
   switch (s._type) {
     case "image":
       return (
@@ -30,7 +29,8 @@ const VariedTypeCarousel = ({ s, key }) => {
       return (
         <div className={styles.embla__slide__nested}>
           <div className={styles.embla__slide__inner__nested}>
-            <video playsInline loop autoplay className={styles.video} src={`${s.id}`}>
+            <video muted playsinline loop autoPlay className={styles.video}>
+              <source src={`${s.id}`} type="video/mp4"/>
             </video>
           </div>
         </div>
@@ -94,7 +94,6 @@ const NestedCarousel = ({ slides, setLockParentScroll }) => {
         <div className={styles.embla__viewport} ref={viewportRef}>
           <div className={styles.embla__container__nested}>
             {slides.map((s, index) => {
-              console.log('85',s)
               return (
                 <VariedTypeCarousel s={s} key={index} />
               );
