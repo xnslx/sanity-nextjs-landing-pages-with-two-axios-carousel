@@ -2,17 +2,31 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { PrevButton, NextButton } from "../EmblaCarouselButton";
 import useEmblaCarousel from "embla-carousel-react";
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
+import { motion } from 'framer-motion';
 
 import { useNestedEmblaCarousel } from '../useNestedEmblaCarousel'
 import NestedCarousel from '../NestedCarousel';
 import styles from './Carousels.module.css'
 import EmblaCarouselPrevButton from '../EmblaCarouselPrevButton'
 import EmblaCarouselNextButton from '../EmblaCarouselNextButton';
+import GradientBackground from '../GradientBackground';
 
 
 export default function Carousels(props){
     const { carousels, _key, _type } = props
-    
+
+    const [rotation, setRotation] = useState(0);
+    const [rotateNum, setRotateNum] = useState(0);
+
+    const prevBtnRotation = () => {
+        setRotation((rotation) => rotation + 18);
+        setRotateNum(rotation);
+    };
+
+    const nextBtnRotation = () => {
+        setRotation((rotation) => rotation - 18);
+        setRotateNum(rotation);
+    };
 
     const [viewportRef, embla] = useEmblaCarousel({
         axis: "x",
@@ -22,8 +36,14 @@ export default function Carousels(props){
     const setLockParentScroll = useNestedEmblaCarousel(embla);
     const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
     const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
-    const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);
-    const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla]);
+    const scrollPrev = useCallback(() => {
+        embla && embla.scrollPrev()
+        prevBtnRotation()
+    }, [embla]);
+    const scrollNext = useCallback(() => {
+        embla && embla.scrollNext()
+        nextBtnRotation()
+    }, [embla]);
     const onSelect = useCallback(() => {
         if (!embla) return;
         setPrevBtnEnabled(embla.canScrollPrev());
@@ -39,6 +59,7 @@ export default function Carousels(props){
 
     return (
         <>
+            <GradientBackground rotateNum={rotation}/>
             <div className={styles.embla}>
                 <div className={styles.embla__viewport} ref={viewportRef}>
                     <div className={styles.embla__container}>
