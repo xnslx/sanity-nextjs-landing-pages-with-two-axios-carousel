@@ -208,7 +208,7 @@
   /* background-color: #1bcacd; */
   background-color: transparent;
   border-style: none;
-  transform: scale(0.25);
+  transform: scale(0.15);
   cursor: pointer;
   touch-action: manipulation;
   position: absolute;
@@ -221,7 +221,7 @@
 .nextBtn{
   background-color: transparent;
   border-style: none;
-  transform: scale(0.25);
+  transform: scale(0.15);
   cursor: pointer;
   position: absolute;
   z-index: 1;
