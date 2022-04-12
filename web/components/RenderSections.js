@@ -1,10 +1,10 @@
-import React, {Fragment} from 'react'
+import React, {Fragment, useState} from 'react'
 import PropTypes from 'prop-types'
 import * as SectionComponents from './sections'
 import capitalizeString from '../utils/capitalizeString'
+import GradientBackground from './GradientBackground'
 
 function resolveSections(section) {
-  console.log('section', section)
   // eslint-disable-next-line import/namespace
   const Section = SectionComponents[capitalizeString(section._type)]
 
@@ -31,7 +31,7 @@ function RenderSections(props) {
         if (!SectionComponent) {
           return <div>Missing section {section._type}</div>
         }
-        return <SectionComponent {...section} key={section._key} />
+        return (<SectionComponent {...section} key={section._key} />)
       })}
     </Fragment>
   )

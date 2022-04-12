@@ -1,10 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
 
 import {LogoJsonLd} from 'next-seo'
 import Header from './Header'
 import Footer from './Footer'
+import GradientBackground from './GradientBackground'
 
 function Layout(props) {
   const {config, children} = props

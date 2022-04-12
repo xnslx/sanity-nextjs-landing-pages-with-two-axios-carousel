@@ -3,6 +3,7 @@
 .root {
   position: relative;
   padding: 2rem 0;
+  z-index: 1;
 
   @media (--media-min-medium) {
     padding: 4rem 0;

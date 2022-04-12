@@ -9,6 +9,7 @@
   background-repeat: no-repeat;
   background-position: center center;
   padding-bottom: 2rem;
+  z-index: 1;
 
   @media (--media-min-medium) {
     padding-bottom: 4rem;
