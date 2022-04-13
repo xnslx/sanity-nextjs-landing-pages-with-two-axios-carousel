@@ -132,7 +132,8 @@ const LandingPage = (props) => {
         twitter={{
           handle: '@handle',
           site: '@site',
-          cardType: 'summary_large_image',
+          cardType: 'summary',
+          image: openGraphImages
         }}
       />
       {content && <RenderSections sections={content} />}
