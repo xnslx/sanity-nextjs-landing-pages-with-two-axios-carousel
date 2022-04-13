@@ -129,6 +129,11 @@ const LandingPage = (props) => {
           images: openGraphImages,
         }}
         noindex={disallowRobots}
+        twitter={{
+          handle: '@handle',
+          site: '@site',
+          cardType: 'summary_large_image',
+        }}
       />
       {content && <RenderSections sections={content} />}
     </Layout>
