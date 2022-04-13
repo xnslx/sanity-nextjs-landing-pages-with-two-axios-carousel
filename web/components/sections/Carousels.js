@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { PrevButton, NextButton } from "../EmblaCarouselButton";
 import useEmblaCarousel from "embla-carousel-react";
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 import { motion } from 'framer-motion';
@@ -10,6 +9,7 @@ import styles from './Carousels.module.css'
 import EmblaCarouselPrevButton from '../EmblaCarouselPrevButton'
 import EmblaCarouselNextButton from '../EmblaCarouselNextButton';
 import GradientBackground from '../GradientBackground';
+// import { PrevButton, NextButton } from "../EmblaCarouselButton";
 
 
 export default function Carousels(props){

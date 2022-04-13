@@ -19,7 +19,7 @@ const VariedTypeCarousel = ({ s, key }) => {
           <div className={styles.embla__slide__inner__nested}>
             <img
               className={styles.embla__slide__img__nested}
-              src={urlFor(s.asset._ref).width(480).url()}
+              src={urlFor(s.asset._ref).height(480).url()}
               alt="A cool cat."
             />
           </div>
