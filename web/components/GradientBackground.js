@@ -17,13 +17,13 @@ const GradientBackground = ({ children, rotateNum }) => {
             fx="0.5"
             fy="0.5"
           >
-            <stop offset="5%" stop-color="#fffc00" />
-            <stop offset="95%" stop-color="#ffffff" />
+            <stop offset="5%" stopColor="#fffc00" />
+            <stop offset="95%" stopColor="#ffffff" />
           </motion.radialGradient>
           <motion.rect
             x="0"
             y="0"
-            stroke-width="5"
+            strokeWidth="5"
             strokeLinejoin="round"
             
             width="100%"

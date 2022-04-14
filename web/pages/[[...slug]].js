@@ -82,7 +82,6 @@ export const getServerSideProps = async ({params}) => {
 const builder = imageUrlBuilder(client)
 
 const LandingPage = (props) => {
-  console.log('props', props)
   const {
     title = 'Missing title',
     description,

@@ -7,7 +7,7 @@ import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 import client from "../client";
 import styles from './NestedCarousel.module.css'
 
-const VariedTypeCarousel = ({ s, key }) => {
+const VariedTypeCarousel = ({ s }, key) => {
   const builder = imageUrlBuilder(client)
   function urlFor(source) {
     return builder.image(source)
@@ -29,7 +29,7 @@ const VariedTypeCarousel = ({ s, key }) => {
       return (
         <div className={styles.embla__slide__nested}>
           <div className={styles.embla__slide__inner__nested}>
-            <video autoplay="autoplay" muted playsinline loop autoPlay className={styles.video}>
+            <video autoPlay="autoplay" muted playsInline loop className={styles.video}>
               <source src={`${s.id}`} type="video/mp4"/>
             </video>
           </div>
