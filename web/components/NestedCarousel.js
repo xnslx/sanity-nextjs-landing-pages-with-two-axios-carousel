@@ -29,9 +29,11 @@ const VariedTypeCarousel = ({ s }, key) => {
       return (
         <div className={styles.embla__slide__nested}>
           <div className={styles.embla__slide__inner__nested}>
-            <video autoPlay="autoplay" muted playsInline loop className={styles.video}>
-              <source src={`${s.id}`} type="video/mp4"/>
-            </video>
+            <div className={styles.embla__slide__img__nested}>
+              <video autoPlay="autoplay" muted playsInline loop className={styles.video}>
+                <source src={`${s.id}`} type="video/mp4"/>
+              </video>
+            </div>
           </div>
         </div>
         // <iframe

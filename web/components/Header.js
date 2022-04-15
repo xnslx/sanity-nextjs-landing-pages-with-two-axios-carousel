@@ -14,7 +14,7 @@ class Header extends Component {
     router: PropTypes.shape({
       pathname: PropTypes.string,
       query: PropTypes.shape({
-        slug: PropTypes.string,
+        slug: PropTypes.array,
       }),
       events: PropTypes.any,
     }),
@@ -22,7 +22,7 @@ class Header extends Component {
     navItems: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,
-        slug: PropTypes.arrayOf(PropTypes.string),
+        slug: PropTypes.object.isRequired
       })
     ),
     logo: PropTypes.shape({
@@ -68,7 +68,10 @@ class Header extends Component {
 
   render() {
     const {title = 'Missing title', navItems, router, logo} = this.props
-    const {showNav} = this.state
+    const { showNav } = this.state
+    
+    // console.log('navItems', navItems)
+    // console.log('props', this.props)
 
     return (
       <div className={styles.root} data-show-nav={showNav}>
@@ -81,7 +84,7 @@ class Header extends Component {
           <ul className={styles.navItems}>
             {navItems &&
               navItems.map((item) => {
-                const {slug, title, _id} = item
+                const { slug, title, _id } = item
                 const isActive = slugParamToPath(router.query.slug) === slug.current
                 return (
                   <li key={_id} className={styles.navItem}>

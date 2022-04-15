@@ -193,6 +193,8 @@
   @media only screen and (max-width: 768px) {
     .menu{
       font-size: 2rem;
+      float:left;
+      margin-left: 0;
     }
 
     .embla__button__prev {

@@ -4,6 +4,7 @@ import * as SectionComponents from './sections'
 import capitalizeString from '../utils/capitalizeString'
 import GradientBackground from './GradientBackground'
 
+
 function resolveSections(section) {
   // eslint-disable-next-line import/namespace
   const Section = SectionComponents[capitalizeString(section._type)]
@@ -27,10 +28,9 @@ function RenderSections(props) {
   return (
     <Fragment>
       {sections.map((section) => {
-        console.log('section', section)
         const SectionComponent = resolveSections(section)
         if (!SectionComponent) {
-          return <div key={section._key} >Missing section {section._type}</div>
+          return <div key={section._key}>Missing section {section._type}</div>
         }
         return (<SectionComponent {...section} key={section._key} />)
       })}

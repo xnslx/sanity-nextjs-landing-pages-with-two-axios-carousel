@@ -183,8 +183,8 @@
   
   .embla__dot.is-selected:after {
     background-color: #000000;
-    outline-offset: 4px;
-    outline:1px solid black;
+    /* outline-offset: 4px;
+    outline:1px solid black; */
     opacity: 1;
   }
 
